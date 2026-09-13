@@ -1,0 +1,2 @@
+--require r/have_fastmem.require
+--echo # FASTMEM engine is available

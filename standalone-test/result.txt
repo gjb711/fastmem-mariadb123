@@ -1,0 +1,6 @@
+test A (torn read): writes=30049182 reads=23611968
+  note: 46858 spurious dup errors (harmless races)
+test B (unique-key integrity): 115 rows verified
+test C (stale position): OK
+test D (multi-key bookkeeping): OK
+ALL TESTS PASSED

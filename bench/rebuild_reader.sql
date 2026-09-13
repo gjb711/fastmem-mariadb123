@@ -1,0 +1,14 @@
+DROP PROCEDURE IF EXISTS fm_reader;
+DELIMITER //
+CREATE PROCEDURE fm_reader(IN tbl VARCHAR(255), IN steps INT)
+BEGIN
+  DECLARE i INT DEFAULT 0;
+  WHILE i < steps DO
+    SET @q = CONCAT('SELECT COALESCE(SUM(close),0), COUNT(*) INTO @s, @c FROM ', tbl);
+    PREPARE st FROM @q;
+    EXECUTE st;
+    DEALLOCATE PREPARE st;
+    SET i = i + 1;
+  END WHILE;
+END//
+DELIMITER ;
